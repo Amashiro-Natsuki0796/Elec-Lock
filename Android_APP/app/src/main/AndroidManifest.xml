@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.netlockwidget">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Elec Lock"
+        android:supportsRtl="true"
+        android:enabled="true"
+        android:exported="true"
+        android:networkSecurityConfig="@xml/network_security_config">
+        
+        <!-- 主Activity -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <!-- 锁定小部件 -->
+        <receiver android:name=".LockWidgetProvider"
+            android:label="Lock Widget"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.example.netlockwidget.UNLOCK_ACTION" />
+            </intent-filter>
+            
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/lock_widget_info" />
+        </receiver>
+        
+    </application>
+
+</manifest>
