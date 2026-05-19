@@ -46,7 +46,7 @@ make                 # 编译程序
 - VIBRATE - 震动通知
 - POST_NOTIFICATIONS - 发送通知
 
-## 硬件需求
+## 硬件需求：
 
 - ESP32开发板（推荐ESP32-C3）
 - 电磁锁或其他电子锁设备
