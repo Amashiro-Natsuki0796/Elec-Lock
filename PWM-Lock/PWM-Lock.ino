@@ -23,7 +23,7 @@ const char* password = "*********";
 // 控制变量
 bool mosEnabled = false;
 unsigned long startTime = 0;
-const unsigned long duration = 300; // 0.3秒 = 300毫秒
+const unsigned long duration = 400; // 0.4秒
 
 // Web服务器
 WiFiServer server(80);
