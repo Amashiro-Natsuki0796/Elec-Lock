@@ -6,11 +6,11 @@ extern "C" {
 }
 
 // WiFi配置
-const char* ssid = "*********";
-const char* password = "*********";
+const char* ssid = "XXXX_2.4G";
+const char* password = "XXXXXXXX";
 
-// 定义PWM引脚（ESP32-C3的A0通常对应GPIO0）
-#define PWM_PIN 0  // GPIO0 对应 A0
+// 定义PWM引脚（ESP32-C3的A0通常对应GPIO0，但GPIO0是启动引脚，改用GPIO4）
+#define PWM_PIN 4  // GPIO4
 
 // PWM参数
 #define LEDC_TIMER              LEDC_TIMER_0
@@ -43,9 +43,7 @@ void setup() {
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP());
   
-  // 配置GPIO引脚模式
-  pinMode(PWM_PIN, OUTPUT);
-  digitalWrite(PWM_PIN, LOW);  // 初始状态设为低电平
+  // 配置LEDC PWM（LEDC会自动配置引脚模式，无需pinMode）
   
   // 准备LED控制结构体 - 按照正确的字段顺序初始化
   ledc_timer_config_t ledc_timer = {};
